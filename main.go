@@ -16,6 +16,6 @@ func main() {
 }
 
 func root(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Got pinged!")
+	fmt.Println("Got pinged")
 	w.Write([]byte("Ping!"))
 }
