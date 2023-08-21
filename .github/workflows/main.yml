@@ -29,8 +29,8 @@ jobs:
           url: https://k8s-test.nuntio.io
           image: almostuseful/clockbox:latest
           projectID: 801004e6-0c97-4ac9-948c-e31144103986
-          msb: "13708720925873358613"
-          lsb: "11435196135304169797"
+          msb: "14367851889679157447"
+          lsb: "9383905216306800690"
       - name: Deploy to capsule
         uses: nuntiodev/actions/deploy@main
         with:
@@ -38,6 +38,6 @@ jobs:
           password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
           url: https://k8s-test.nuntio.io
           projectID: 801004e6-0c97-4ac9-948c-e31144103986
-          msb: "13708720925873358613"
-          lsb: "11435196135304169797"
+          msb: "14367851889679157447"
+          lsb: "9383905216306800690"
           buildID: ${{ steps.build_nuntio.outputs.buildID }}
