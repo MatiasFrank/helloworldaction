@@ -28,6 +28,9 @@ inputs:
   buildID:
     description: "ID of the nuntio build. Will default to the sha of the git commit if not provided."
     required: false
+  projectID:
+    description: "ID of the Nuntio project"
+    required: true
 outputs:
   buildID:
     description: "ID of the build created"
