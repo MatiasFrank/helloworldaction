@@ -2,15 +2,22 @@
   "name": "helloworldaction",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && cp action.yml dist",
+    "package": "ncc build --source-map --license licenses.txt"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1"
-  }
+    "@actions/github": "^5.1.1",
+    "@nuntio/sdk": "0.0.2-dev.19"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/node-localstorage": "^1.3.0",
+    "@vercel/ncc": "^0.36.1",
+    "typescript": "^5.0.4"
+  },
+  "author": "",
+  "license": "ISC"
 }
