@@ -41,7 +41,7 @@ function makeUserIdentifier(inputs: Inputs): UserIdentifier {
 }
 
 function getBuildID(inputs: Inputs): string {
-  if (inputs.buildID) {
+  if (inputs.buildID !== undefined && inputs.buildID != "") {
     return inputs.buildID;
   }
 
@@ -54,7 +54,7 @@ async function action(inputs: Inputs) {
   await manager.login(makeUserIdentifier(inputs), inputs.password);
 
   const uuid = UUID.fromJson({ msb: inputs.msb, lsb: inputs.lsb });
-  const client = nuntio("a918fa45-4d17-46ca-aee9-7ef16afa62bb");
+  const client = nuntio(inputs.projectID);
   client.setBaseURL(inputs.url);
   const buildID = getBuildID(inputs);
   await client.capsuleClient.createBuild(

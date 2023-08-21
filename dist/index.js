@@ -36208,7 +36208,7 @@ function makeUserIdentifier(inputs) {
     throw new Error("no identifier was chosen");
 }
 function getBuildID(inputs) {
-    if (inputs.buildID) {
+    if (inputs.buildID !== undefined && inputs.buildID != "") {
         return inputs.buildID;
     }
     return github.context.sha.substring(0, 10);
@@ -36218,7 +36218,7 @@ async function action(inputs) {
     manager.setBaseURL(inputs.url);
     await manager.login(makeUserIdentifier(inputs), inputs.password);
     const uuid = uuid_pb.UUID.fromJson({ msb: inputs.msb, lsb: inputs.lsb });
-    const client = nuntio("a918fa45-4d17-46ca-aee9-7ef16afa62bb");
+    const client = nuntio(inputs.projectID);
     client.setBaseURL(inputs.url);
     const buildID = getBuildID(inputs);
     await client.capsuleClient.createBuild(new service_pb.CreateBuildRequest({
