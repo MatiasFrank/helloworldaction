@@ -21,7 +21,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
       - name: Build Nuntio
-        uses: nuntiodev/build@main
+        uses: nuntiodev/actions/build@main
+        id: build_nuntio
         with:
           email: matias@nuntio.io
           password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
@@ -30,3 +31,13 @@ jobs:
           projectID: 801004e6-0c97-4ac9-948c-e31144103986
           msb: "13708720925873358613"
           lsb: "11435196135304169797"
+      - name: Deploy to capsule
+        uses: nuntiodev/actions/deploy@main
+        with:
+          email: matias@nuntio.io
+          password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
+          url: https://k8s-test.nuntio.io
+          projectID: 801004e6-0c97-4ac9-948c-e31144103986
+          msb: "13708720925873358613"
+          lsb: "11435196135304169797"
+          buildID: ${{ steps.build_nuntio.buildID }}
