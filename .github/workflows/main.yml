@@ -40,4 +40,4 @@ jobs:
           projectID: 801004e6-0c97-4ac9-948c-e31144103986
           msb: "13708720925873358613"
           lsb: "11435196135304169797"
-          buildID: ${{ steps.build_nuntio.buildID }}
+          buildID: ${{ steps.build_nuntio.outputs.buildID }}
