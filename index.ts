@@ -17,6 +17,7 @@ interface Inputs {
   msb: string;
   lsb: string;
   buildID?: string;
+  projectID: string;
 }
 
 function makeUserIdentifier(inputs: Inputs): UserIdentifier {
@@ -75,6 +76,7 @@ try {
     msb: getInput("msb"), //"10131572704171216282",
     lsb: getInput("lsb"), //"12395029164007084783",
     buildID: getInput("buildID"), //"someid",
+    projectID: getInput("projectID"), //801004e6-0c97-4ac9-948c-e31144103986
   });
 } catch (e: any) {
   setFailed(e.message);
