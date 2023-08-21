@@ -6,7 +6,6 @@ node_modules
 .output
 .env
 .idea
-dist
 .DS_Store
 scratch
 
