@@ -2,7 +2,7 @@ FROM golang:1.20
 
 WORKDIR /usr/src/app
 
-COPY go.mod go.sum main.go
-RUN go mod download && go mod verify
+COPY go.mod main.go
+RUN go mod download
 
 CMD ["go", "run", "main.go"]
