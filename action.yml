@@ -35,5 +35,5 @@ outputs:
   buildID:
     description: "ID of the build created"
 runs:
-  using: "node18"
+  using: "node20"
   main: "dist/index.js"
