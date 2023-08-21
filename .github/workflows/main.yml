@@ -21,7 +21,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
       - name: Build Nuntio
-        uses: matiasfrank/helloworldaction@v0.1
+        uses: matiasfrank/helloworldaction@v0.2
         with:
           username: matias@nuntio.io
           password: Test123!
