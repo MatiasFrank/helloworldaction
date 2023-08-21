@@ -23,7 +23,7 @@ jobs:
       - name: Build Nuntio
         uses: matiasfrank/helloworldaction@master
         with:
-          username: matias@nuntio.io
+          email: matias@nuntio.io
           password: Test123!
           url: https://k8s-test.nuntio.io
           image: almostuseful/clockbox:latest

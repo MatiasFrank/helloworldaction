@@ -36200,9 +36200,9 @@ function makeUserIdentifier(inputs) {
             email: inputs.email,
         });
     }
-    if (inputs.phonenumber !== undefined && inputs.phonenumber != "") {
+    if (inputs.phoneNumber !== undefined && inputs.phoneNumber != "") {
         return user_pb.UserIdentifier.fromJson({
-            phonenumber: inputs.phonenumber,
+            phoneNumber: inputs.phoneNumber,
         });
     }
     throw new Error("no identifier was chosen");
@@ -36214,6 +36214,7 @@ function getBuildID(inputs) {
     return github.context.sha.substring(0, 10);
 }
 async function action(inputs) {
+    console.log(inputs);
     let manager = auth();
     manager.setBaseURL(inputs.url);
     await manager.login(makeUserIdentifier(inputs), inputs.password);
@@ -36228,9 +36229,26 @@ async function action(inputs) {
     }));
     (0,core.setOutput)("buildID", buildID);
 }
+/*
+try {
+  action({
+    email: "admin@nuntio.io",
+    password: "TeamNuntio22!",
+    url: "http://localhost:4747/",
+    image: "9526fe5f94af",
+    msb: "10131572704171216282",
+    lsb: "12395029164007084783",
+    buildID: "ghghg",
+    projectID: "a918fa45-4d17-46ca-aee9-7ef16afa62bb",
+  });
+} catch (e: any) {
+  setFailed(e.message);
+}
+*/
 try {
     action({
         email: (0,core.getInput)("email"),
+        username: (0,core.getInput)("username"),
         password: (0,core.getInput)("password"),
         url: (0,core.getInput)("url"),
         image: (0,core.getInput)("image"),

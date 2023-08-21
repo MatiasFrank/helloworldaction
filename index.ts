@@ -10,7 +10,7 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 interface Inputs {
   username?: string;
   email?: string;
-  phonenumber?: string;
+  phoneNumber?: string;
   password: string;
   url: string;
   image: string;
@@ -31,9 +31,9 @@ function makeUserIdentifier(inputs: Inputs): UserIdentifier {
       email: inputs.email,
     });
   }
-  if (inputs.phonenumber !== undefined && inputs.phonenumber != "") {
+  if (inputs.phoneNumber !== undefined && inputs.phoneNumber != "") {
     return UserIdentifier.fromJson({
-      phonenumber: inputs.phonenumber,
+      phoneNumber: inputs.phoneNumber,
     });
   }
 
@@ -49,6 +49,8 @@ function getBuildID(inputs: Inputs): string {
 }
 
 async function action(inputs: Inputs) {
+  console.log(inputs);
+
   let manager = auth();
   manager.setBaseURL(inputs.url);
   await manager.login(makeUserIdentifier(inputs), inputs.password);
@@ -67,9 +69,27 @@ async function action(inputs: Inputs) {
   setOutput("buildID", buildID);
 }
 
+/*
+try {
+  action({
+    email: "admin@nuntio.io",
+    password: "TeamNuntio22!",
+    url: "http://localhost:4747/",
+    image: "9526fe5f94af",
+    msb: "10131572704171216282",
+    lsb: "12395029164007084783",
+    buildID: "ghghg",
+    projectID: "a918fa45-4d17-46ca-aee9-7ef16afa62bb",
+  });
+} catch (e: any) {
+  setFailed(e.message);
+}
+*/
+
 try {
   action({
     email: getInput("email"), //"admin@nuntio.io",
+    username: getInput("username"), //"admin@nuntio.io",
     password: getInput("password"), //"TeamNuntio22!",
     url: getInput("url"), //"http://localhost:4747/",
     image: getInput("image"), //"9526fe5f94af",
