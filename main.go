@@ -12,26 +12,29 @@ import (
 )
 
 func main() {
-	test()
-	fmt.Println("Hello world!")
+	log.Println("Hello world!")
 	http.HandleFunc("/", root)
+	http.HandleFunc("/try", test)
 	err := http.ListenAndServe(":3333", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func test() {
-	client := nuntio.NewClient()
-	resp, err := client.Project().Get(context.Background(), connect.NewRequest(&project.GetRequest{}))
-	if err != nil {
-		log.Printf("failed to project: %q\n", err)
-	} else {
-		log.Printf("projectid: %s\n", resp.Msg.Project.ProjectId)
-	}
-}
-
 func root(w http.ResponseWriter, r *http.Request) {
 	log.Println("Got pinged")
-	w.Write([]byte("Ping2!"))
+	w.Write([]byte("Ping3!"))
+}
+
+func test(w http.ResponseWriter, r *http.Request) {
+	client := nuntio.NewClient()
+	resp, err := client.Project().Get(context.Background(), connect.NewRequest(&project.GetRequest{}))
+	var s string
+	if err != nil {
+		s = fmt.Sprintf("failed to project: %q\n", err)
+	} else {
+		s = fmt.Sprintf("projectid: %s\n", resp.Msg.Project.ProjectId)
+	}
+	log.Printf(s)
+	w.Write([]byte(s))
 }
