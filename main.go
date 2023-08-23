@@ -25,13 +25,13 @@ func test() {
 	client := nuntio.NewClient()
 	resp, err := client.Project().Get(context.Background(), connect.NewRequest(&project.GetRequest{}))
 	if err != nil {
-		fmt.Printf("failed to project: %q\n", err)
+		log.Printf("failed to project: %q\n", err)
 	} else {
-		fmt.Printf("projectid: %s\n", resp.Msg.Project.ProjectId)
+		log.Printf("projectid: %s\n", resp.Msg.Project.ProjectId)
 	}
 }
 
 func root(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Got pinged")
+	log.Println("Got pinged")
 	w.Write([]byte("Ping2!"))
 }
