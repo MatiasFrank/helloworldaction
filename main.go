@@ -14,7 +14,7 @@ import (
 func main() {
 	log.Println("Hello world!")
 	http.HandleFunc("/", root)
-	http.HandleFunc("/try", test)
+	http.HandleFunc("/test", test)
 	err := http.ListenAndServe(":3333", nil)
 	if err != nil {
 		log.Fatal(err)
@@ -23,7 +23,7 @@ func main() {
 
 func root(w http.ResponseWriter, r *http.Request) {
 	log.Println("Got pinged")
-	w.Write([]byte("Ping3!"))
+	w.Write([]byte("Ping4!"))
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
