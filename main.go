@@ -23,7 +23,7 @@ func main() {
 
 func root(w http.ResponseWriter, r *http.Request) {
 	log.Println("Got pinged")
-	w.Write([]byte("Ping5!"))
+	w.Write([]byte("Ping6!"))
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
