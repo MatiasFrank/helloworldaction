@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to capsule
         uses: nuntiodev/actions/deploy@main
         with:
-          email: matias@nuntio.io
+          email: jack@nuntio.io
           password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
           url: https://k8s-test.nuntio.io
           projectID: bc9f27d2-d7c5-4f69-b5bf-8122857f6cce
