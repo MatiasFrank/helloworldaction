@@ -24,18 +24,16 @@ jobs:
         uses: nuntiodev/actions/build@main
         id: build_nuntio
         with:
-          email: jack@nuntio.io
-          password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
+          clientID: nuntio_a50ec31e-a804-4aeb-9098-424a3adc1268
+          clientSecret: ${{ secrets.K8S_NUNTIO_SECRET }}
           url: https://k8s-test.nuntio.io
           image: almostuseful/clockbox:latest
-          projectID: bc9f27d2-d7c5-4f69-b5bf-8122857f6cce
           capsuleID: 35c0172f-2787-44fd-859d-c39a153cc2dc
       - name: Deploy to capsule
         uses: nuntiodev/actions/deploy@main
         with:
-          email: jack@nuntio.io
-          password: ${{ secrets.K8S_NUNTIO_PASSWORD }}
+          clientID: nuntio_a50ec31e-a804-4aeb-9098-424a3adc1268
+          clientSecret: ${{ secrets.K8S_NUNTIO_SECRET }}
           url: https://k8s-test.nuntio.io
-          projectID: bc9f27d2-d7c5-4f69-b5bf-8122857f6cce
           capsuleID: 35c0172f-2787-44fd-859d-c39a153cc2dc
           buildID: ${{ steps.build_nuntio.outputs.buildID }}
