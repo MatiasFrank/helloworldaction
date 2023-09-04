@@ -10,7 +10,7 @@ jobs:
       - name: test add env variable
         run: |
           ls 
-          echo "gittag=${git tag --points-at HEAD}" >> $GITHUB_ENV
+          echo "gittag=$(git tag --points-at HEAD)" >> $GITHUB_ENV
 
       - name: Accesses env variable
         run: |
