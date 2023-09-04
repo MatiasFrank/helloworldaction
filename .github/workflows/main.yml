@@ -8,14 +8,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: test add env variable
+        id: gittag
         run: |
           ls 
-          echo "gittag=$(git tag --points-at HEAD)" >> $GITHUB_ENV
+          echo "gittag=$(git tag --points-at HEAD)" >> $GITHUB_OUTPUT
 
       - name: Accesses env variable
         run: |
-          echo ${{env.gittag}}
-          if [[ ${{env.gittag}} ]]; then echo hej; else echo hej2; fi
+          echo ${{steps.gittag.outputs.gittag}}
+          if [[ ${{steps.gittag.outputs.gittag}} ]]; then echo hej; else echo hej2; fi
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
