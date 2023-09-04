@@ -16,7 +16,7 @@ jobs:
       - name: Accesses env variable
         run: |
           echo ${{steps.gittag.outputs.gittag}}
-          if [[ ${{ steps.gittag.outputs.gittag }} ]]; then echo asdlkfasdf; else echo ss; fi
+          if [[ ${ steps.gittag.outputs.gittag } ]]; then echo asdlkfasdf; else echo ss; fi
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
