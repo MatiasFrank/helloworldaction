@@ -28,11 +28,12 @@ jobs:
         uses: rigdev/actions/build@update
         id: build_rig
         with:
+          url: https://rig.infra.rig.dev
+          project: matias
           clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
-          url: https://rig.infra.rig.dev
+          capsule: testcapsule
           image: almostuseful/clockbox:latest
-          capsuleID: testcapsule
 
       # - name: Deploy to capsule
       #   uses: nuntiodev/actions/deploy@main
