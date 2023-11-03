@@ -43,4 +43,4 @@ jobs:
           clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
           capsule: testcapsule
-          buildID: ${{ steps.build_rig.outputs.buildID }}
+          build: ${{ steps.build_rig.outputs.build }}
