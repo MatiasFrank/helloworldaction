@@ -7,22 +7,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: test add env variable
-        id: gittag
-        run: |
-          ls 
-          echo "gittag=$(git tag --points-at HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Accesses env variable
-        run: |
-          echo ${{steps.gittag.outputs.gittag}}
-          export hackvar=${{steps.gittag.outputs.gittag}}
-          if [[ $hackvar ]]; then echo asdlkfasdf; else echo ss; fi
-
-      - name: test conditional
-        if: steps.gittag.outputs.gittag
-        run: echo hej
-
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -40,21 +24,21 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
 
-      - name: Build Nuntio
-        uses: nuntiodev/actions/build@main
-        id: build_nuntio
+      - name: Build Rig
+        uses: rigdev/actions/build@update
+        id: build_rig
         with:
-          clientID: nuntio_a50ec31e-a804-4aeb-9098-424a3adc1268
-          clientSecret: ${{ secrets.K8S_NUNTIO_SECRET }}
-          url: https://k8s-test.nuntio.io
+          clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
+          clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
+          url: https://rig.infra.rig.dev
           image: almostuseful/clockbox:latest
-          capsuleID: 35c0172f-2787-44fd-859d-c39a153cc2dc
+          capsuleID: testcapsule
 
-      - name: Deploy to capsule
-        uses: nuntiodev/actions/deploy@main
-        with:
-          clientID: nuntio_a50ec31e-a804-4aeb-9098-424a3adc1268
-          clientSecret: ${{ secrets.K8S_NUNTIO_SECRET }}
-          url: https://k8s-test.nuntio.io
-          capsuleID: 35c0172f-2787-44fd-859d-c39a153cc2dc
-          buildID: ${{ steps.build_nuntio.outputs.buildID }}
+      # - name: Deploy to capsule
+      #   uses: nuntiodev/actions/deploy@main
+      #   with:
+      #     clientID: nuntio_a50ec31e-a804-4aeb-9098-424a3adc1268
+      #     clientSecret: ${{ secrets.K8S_NUNTIO_SECRET }}
+      #     url: https://k8s-test.nuntio.io
+      #     capsuleID: 35c0172f-2787-44fd-859d-c39a153cc2dc
+      #     buildID: ${{ steps.build_nuntio.outputs.buildID }}
