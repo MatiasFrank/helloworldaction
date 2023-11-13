@@ -34,13 +34,14 @@ jobs:
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
           capsule: testcapsule
           image: almostuseful/clockbox:latest
+          deploy: true
 
-      - name: Deploy to capsule
-        uses: rigdev/actions/deploy@update
-        with:
-          url: https://rig.infra.rig.dev
-          project: matias
-          clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
-          clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
-          capsule: testcapsule
-          build: ${{ steps.build_rig.outputs.build }}
+      # - name: Deploy to capsule
+      #   uses: rigdev/actions/deploy@update
+      #   with:
+      #     url: https://rig.infra.rig.dev
+      #     project: matias
+      #     clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
+      #     clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
+      #     capsule: testcapsule
+      #     build: ${{ steps.build_rig.outputs.build }}
