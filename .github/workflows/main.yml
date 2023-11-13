@@ -25,7 +25,7 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
 
       - name: Create build and deploy
-        uses: rigdev/actions/build@v2
+        uses: rigdev/actions/build@v2.1
         id: build_rig
         with:
           url: https://rig.infra.rig.dev
