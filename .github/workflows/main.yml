@@ -24,8 +24,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
 
-      - name: Build Rig
-        uses: rigdev/actions/build@update
+      - name: Create build and deploy
+        uses: rigdev/actions/build@v2
         id: build_rig
         with:
           url: https://rig.infra.rig.dev
@@ -37,7 +37,7 @@ jobs:
           deploy: true
 
       # - name: Deploy to capsule
-      #   uses: rigdev/actions/deploy@update
+      #   uses: rigdev/actions/deploy@v2
       #   with:
       #     url: https://rig.infra.rig.dev
       #     project: matias
