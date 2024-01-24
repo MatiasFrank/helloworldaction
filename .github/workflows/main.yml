@@ -14,7 +14,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@update
 
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -25,7 +25,7 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
 
       - name: Create build and deploy
-        uses: rigdev/actions/build@v2.1
+        uses: rigdev/actions/build@update
         id: build_rig
         with:
           url: https://rig.infra.rig.dev
@@ -34,6 +34,7 @@ jobs:
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
           capsule: testcapsule
           image: almostuseful/clockbox:latest
+          environment: production
           deploy: true
 
       # - name: Deploy to capsule

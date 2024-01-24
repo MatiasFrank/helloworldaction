@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	log.Println("Hello world!")
+	log.Println("Hello world! 14")
 	http.HandleFunc("/", root)
 	http.HandleFunc("/test", test)
 	err := http.ListenAndServe(":3333", nil)
@@ -23,7 +23,7 @@ func main() {
 
 func root(w http.ResponseWriter, r *http.Request) {
 	log.Println("Got pinged")
-	w.Write([]byte("Ping13!"))
+	w.Write([]byte("Ping14!"))
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
