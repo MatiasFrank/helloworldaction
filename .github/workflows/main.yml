@@ -39,6 +39,7 @@ jobs:
 
       - name: Deploy to capsule
         uses: rigdev/actions/deploy@update
+        id: deploy_rig
         with:
           url: https://rig.infra.rig.dev
           project: matias
@@ -48,3 +49,7 @@ jobs:
           build: ${{ steps.build_rig.outputs.build }}
           environment: production
           dryRun: true
+          
+      - name: Check output
+        shell: bash
+        run: echo {{ .steps.deploy_rig.outputs.rolloutConfig  }}
