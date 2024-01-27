@@ -35,24 +35,24 @@ jobs:
           capsule: testcapsule
           image: almostuseful/clockbox:latest
           environment: production
-          # deploy: true
-          # dryRun: true
-
-      - name: Deploy to capsule
-        uses: rigdev/actions/deploy@update
-        id: deploy_rig
-        with:
-          url: https://rig.infra.rig.dev
-          project: matias
-          clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
-          clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
-          capsule: testcapsule
-          build: ${{ steps.build_rig.outputs.build }}
-          environment: production
+          deploy: true
           dryRun: true
+
+      # - name: Deploy to capsule
+      #   uses: rigdev/actions/deploy@update
+      #   id: deploy_rig
+      #   with:
+      #     url: https://rig.infra.rig.dev
+      #     project: matias
+      #     clientID: rig_d3640d9d-70ef-437e-ac7c-f994264cea27
+      #     clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
+      #     capsule: testcapsule
+      #     build: ${{ steps.build_rig.outputs.build }}
+      #     environment: production
+      #     dryRun: true
           
       - name: Check output
         env:
-          OUTPUT: ${{ steps.deploy_rig.outputs.rolloutConfig }}
+          OUTPUT: ${{ steps.build_rig.outputs.rolloutConfig }}
         shell: bash
         run: echo $OUTPUT
