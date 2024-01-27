@@ -51,5 +51,7 @@ jobs:
           dryRun: true
           
       - name: Check output
+        env:
+          OUTPUT: ${{ .steps.deploy_rig.outputs.rolloutConfig  }}
         shell: bash
-        run: echo ${{ .steps.deploy_rig.outputs.rolloutConfig  }}
+        run: echo $OUTPUT
