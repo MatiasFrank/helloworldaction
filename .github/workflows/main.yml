@@ -36,6 +36,7 @@ jobs:
           image: almostuseful/clockbox:latest
           environment: production
           deploy: true
+          force: true
           # dryRun: true
 
       # - name: Deploy to capsule
