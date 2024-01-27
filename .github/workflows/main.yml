@@ -46,4 +46,4 @@ jobs:
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
           capsule: testcapsule
           build: ${{ steps.build_rig.outputs.build }}
-          nvironment: production
+          environment: production
