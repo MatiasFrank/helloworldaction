@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	log.Println("Hello world! 16")
+	log.Println("Hello world! 17")
 	http.HandleFunc("/", root)
 	http.HandleFunc("/test", test)
 	err := http.ListenAndServe(":3333", nil)
