@@ -47,3 +47,4 @@ jobs:
           capsule: testcapsule
           build: ${{ steps.build_rig.outputs.build }}
           environment: production
+          dryRun: true
