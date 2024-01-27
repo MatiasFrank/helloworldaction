@@ -52,4 +52,4 @@ jobs:
           
       - name: Check output
         shell: bash
-        run: echo {{ .steps.deploy_rig.outputs.rolloutConfig  }}
+        run: echo ${{ .steps.deploy_rig.outputs.rolloutConfig  }}
