@@ -36,7 +36,7 @@ jobs:
           image: almostuseful/clockbox:latest
           environment: production
           deploy: true
-          dryRun: true
+          # dryRun: true
 
       # - name: Deploy to capsule
       #   uses: rigdev/actions/deploy@update
