@@ -34,8 +34,8 @@ jobs:
           clientSecret: ${{ secrets.INFRA_CLUSTER_RIG_SECRET }}
           capsule: testcapsule
           image: almostuseful/clockbox:latest
-          environment: production
-          deploy: true
+          # environment: production
+          # deploy: true
 
       # - name: Deploy to capsule
       #   uses: rigdev/actions/deploy@v2
