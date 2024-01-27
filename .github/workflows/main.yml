@@ -52,6 +52,6 @@ jobs:
           
       - name: Check output
         env:
-          OUTPUT: ${{ .steps.deploy_rig.outputs.rolloutConfig }}
+          OUTPUT: ${{ steps.deploy_rig.outputs.rolloutConfig }}
         shell: bash
         run: echo $OUTPUT
